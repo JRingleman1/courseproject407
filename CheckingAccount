@@ -1,0 +1,33 @@
+package courseProject;
+
+public class CheckingAccount extends Account {
+    private static final double SERVICE_FEE = 0.50;
+    private static final double OVERDRAFT_FEE = 30.00;
+    private static final double INTEREST_RATE = 0.02;
+
+    public CheckingAccount(String customerId, String accountNumber, double initialBalance) {
+        super(customerId, accountNumber, initialBalance);
+    }
+
+    @Override
+    public void withdrawal(double amount) {
+        accountBalance -= (amount + SERVICE_FEE);
+        if (accountBalance < 0) {
+            accountBalance -= OVERDRAFT_FEE;
+        }
+    }
+
+    @Override
+    public void deposit(double amount) {
+        accountBalance += (amount - SERVICE_FEE);
+    }
+
+    @Override
+    public double balance() {
+        return accountBalance;
+    }
+
+    public void applyInterest() {
+        accountBalance += accountBalance * INTEREST_RATE;
+    }
+}
