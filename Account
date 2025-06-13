@@ -1,0 +1,17 @@
+package courseProject;
+
+public abstract class Account implements AccountInterface {
+    protected String customerId;
+    protected String accountNumber;
+    protected double accountBalance;
+
+    public Account(String customerId, String accountNumber, double initialBalance) {
+        this.customerId = customerId;
+        this.accountNumber = accountNumber;
+        this.accountBalance = initialBalance;
+    }
+
+    public abstract void withdrawal(double amount);
+    public abstract void deposit(double amount);
+    public abstract double balance();
+}
